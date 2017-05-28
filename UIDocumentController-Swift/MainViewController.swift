@@ -1,4 +1,4 @@
-//
+	//
 //  ViewController.swift
 //  UiDocumentController-Swift
 //
@@ -79,7 +79,7 @@ class MainViewController: UITableViewController {
         alertController.addAction(previewAction)
         alertController.addAction(openInMenuAction)
         
-        alertController.show(, sender: self)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     func previewDocument(_ sample: Sample) {
@@ -92,10 +92,13 @@ class MainViewController: UITableViewController {
     func openInMenu(_ sample: Sample) {
         
         documentController.url = sample.url
-        documentController.presentOpenInMenu(from: self.view.frame, in: self.view, animated: true)
+        documentController.presentOptionsMenu(from: self.view.frame, in: self.view, animated: true)
         
     }
-
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 }
 
 extension MainViewController: UIDocumentInteractionControllerDelegate {
